@@ -22,8 +22,9 @@ class Food {
         return new Promise((resolve, reject) => {
             try {
                 dbConnection('food', async (db) => {
+                    name= name.toLowerCase()
 
-                    const food = await db.find({name:name}).toArray();
+                    const food = await db.findOne({name:name});
                     resolve(food)
                 })
             } catch (error) {
